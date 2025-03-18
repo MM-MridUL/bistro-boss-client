@@ -62,7 +62,7 @@ const auth = getAuth(app);
         return ()=>{
             return unsubscribe();
         }
-    },[])
+    },[axiosPublic])
 
     const authInfo = {
         user,
