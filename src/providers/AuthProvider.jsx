@@ -41,6 +41,12 @@ const auth = getAuth(app);
         const unsubscribe =  onAuthStateChanged(auth, currentUser=>{
             setUser(currentUser);
             console.log('current User',currentUser);
+            if(currentUser){
+                // get token and store client
+            }
+            else{
+                //  TODO: remove token
+            }
             setLoading(false);
         });
         return ()=>{
