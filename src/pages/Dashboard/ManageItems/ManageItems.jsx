@@ -1,11 +1,12 @@
-import { FaEdit, FaTrash, FaUsers } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
-  const [menu, ,refetch] = useMenu();
+  const [menu, , refetch] = useMenu();
   const axiosSecure = useAxiosSecure();
 
   const handleDeleteItem = (item) => {
@@ -22,8 +23,8 @@ const ManageItems = () => {
         const res = await axiosSecure.delete(`/menu/${item._id}`);
         console.log(res.data);
         if (res.data.deletedCount > 0) {
-            // refetch to update the ui
-            refetch();
+          // refetch to update the ui
+          refetch();
           Swal.fire({
             title: "Deleted!",
             text: `${item.name} has been deleted`,
@@ -73,9 +74,11 @@ const ManageItems = () => {
                   <td>{item.name}</td>
                   <td className="text-right">${item.price}</td>
                   <td>
-                    <button className="btn btn-ghost btn-sm bg-orange-500">
-                      <FaEdit className="text-white"></FaEdit>
-                    </button>
+                    <Link to={`/dashboard/updateItem/${item._id}`}>
+                      <button className="btn btn-ghost btn-sm bg-orange-500">
+                        <FaEdit className="text-white"></FaEdit>
+                      </button>
+                    </Link>
                   </td>
 
                   <td>
