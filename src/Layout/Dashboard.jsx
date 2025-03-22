@@ -58,7 +58,7 @@ const Dashboard = () => {
                             
                             <NavLink to="/dashboard/history">
                             <FaCalendar></FaCalendar>
-                            Payment History</NavLink>
+                            Not History</NavLink>
                         </li>
                         <li>
                             
